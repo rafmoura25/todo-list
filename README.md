@@ -9,7 +9,7 @@ npm install
 ```
 
 ## Como Usar
-Para iniciar o servidor de desenvolvimento, execute o comando abaixo e acesse o aplicativo em seu navegador em http://localhost:3000.
+Para iniciar o servidor de desenvolvimento, execute o comando abaixo e acesse o aplicativo em seu navegador em http://localhost:5173.
 
 ```bash
 npm run dev
