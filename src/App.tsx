@@ -1,35 +1,47 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Header } from "./components/Header";
+import { PlusCircle, ClipboardText } from "phosphor-react";
+
+import styles from "./App.module.css";
+
+import "./global.css";
+import { useState } from "react";
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [totalCreated, setTotalCreated] = useState(0);
+  const [totalDone, setTotalDone] = useState(0);
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div>
+      <Header />
+      <div className={styles.newTask}>
+        <form>
+          <input type="text" placeholder="Adicione uma nova tarefa" required />
+          <div>
+            <button type="submit">
+              Criar
+              <PlusCircle weight="bold" size={16} />
+            </button>
+          </div>
+        </form>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+
+      <div className={styles.tasks}>
+        <div className={styles.info}>
+          <p className={styles.created}>
+            Tarefas criadas <span>{totalCreated}</span>
+          </p>
+          <p className={styles.done}>
+            Concluídas <span>{`${totalDone} de ${totalCreated}`}</span>
+          </p>
+        </div>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+
+      <div className={styles.listTasksEmpty}>
+        <ClipboardText size={56} />
+        <span>Você ainda não tem tarefas cadastradas</span>
+        <p>Crie tarefas e organize seus itens a fazer</p>
+      </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
